@@ -8,6 +8,9 @@
 var apiclientRegistrarse = (function(){
     
     return{
+        getUsuarios(){
+            return $.get("/vitrina"); 
+        },
         adicionarUsuario(nombres,apellidos,telefono,empresa,direccion,correo){
             return $.ajax({
                 url: "/vitrina",

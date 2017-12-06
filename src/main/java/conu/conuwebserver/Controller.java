@@ -6,6 +6,7 @@
 package conu.conuwebserver;
 
 import java.sql.SQLException;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.http.HttpStatus;
@@ -24,25 +25,24 @@ import org.springframework.web.bind.annotation.RestController;
 public class Controller {
 
     @RequestMapping(path = "/vitrina", method = RequestMethod.POST)
-    public ResponseEntity<?> manejadorPostRecursoAdicionarReporteClima(@RequestBody Vitrina vitrina) {
-        System.out.println("conu.conuwebserver.Controller.manejadorPostRecursoAdicionarReporteClima()"+vitrina.getApellidos()+". "+vitrina.getCorreo());
+    public ResponseEntity<?> crearRegistro(@RequestBody Vitrina vitrina) {
+        System.out.println("conu.conuwebserver.Controller.manejadorPostRecursoAdicionarReporteClima()" + vitrina.getApellidos() + ". " + vitrina.getCorreo());
         try {
             vitrina.insertar();
             return new ResponseEntity<>(HttpStatus.CREATED);
-        } catch (ClassNotFoundException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
-            return new ResponseEntity<>(ex.getMessage(),HttpStatus.NOT_FOUND);
-        } catch (InstantiationException ex) {
-            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
-            return new ResponseEntity<>(HttpStatus.CREATED);
-        } catch (IllegalAccessException ex) {
-            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
-            return new ResponseEntity<>(HttpStatus.CREATED);
-        } catch (SQLException ex) {
-            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
-            return new ResponseEntity<>(HttpStatus.CREATED);
+            return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
         }
-            
-       
+    }
+
+    @RequestMapping(path = "/vitrina", method = RequestMethod.GET)
+    public ResponseEntity<?> getRegistros() {
+        try {
+            return new ResponseEntity<>(Vitrina.getAll(), HttpStatus.ACCEPTED);
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+        }
     }
 }

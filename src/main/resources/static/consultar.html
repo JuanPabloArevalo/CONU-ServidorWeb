@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Consultar registros vitrina Académica</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="/webjars/jquery/jquery.min.js"></script>
+        <script src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="/webjars/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/style.css">
+        <script src="js/apiclientRegistrarse.js"></script>
+        <script src="js/registrarse.js"></script>
+    </head>
+    <body id="idFondo" onload="registrarse.cargar()">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+                <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 ">
+                    <div class="jumbotron" id="idPanel">
+                        <div class="form-group">
+                            <h2 id="idTitulo">Participantes Registrados</h2>         
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Nombres</th>
+                                        <th>Apellidos</th>
+                                        <th>Teléfono</th>
+                                        <th>Empresa</th>
+                                        <th>Dirección</th>
+                                        <th>Correo</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="registros">
+                                </tbody>
+                            </table> 
+                            <a href="/index.html" class="btn btn-warning btn-block">Atrás</a>
+                        </div>
+                    </div> 
+                </div> 
+                <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+            </div>   
+        </div>
+    </body>
+</html>
