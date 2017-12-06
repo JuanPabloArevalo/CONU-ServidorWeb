@@ -8,62 +8,39 @@
 
 var registrarse = (function(){
     
-    var nombre;
-    var edad;
-    var nombreUsuario;
-    var contrasena;
-    var correoElectronico;
-    var usuarios=[];
+    var nombres;
+    var apellidos;
+    var telefono;
+    var empresa;
+    var direccion;
+    var correo;
     
     return {
-        init(){
-            $("#btnPublicar").attr("disabled", false);
-        },
         registrarUsuario(){
-             var error = "";
-             var activarBotonRegistrar = true;
-             nombre = $("#nombre").val(); 
-             if(nombre === ""){
-                error = error + "Nombre. ";
-                activarBotonRegistrar = false;
-             }
-             edad = $("#edad").val(); 
-              if(edad === ""){
-                error = error + "Edad. ";
-                activarBotonRegistrar = false;
-              }
-             nombreUsuario = $("#nombreUsuario").val();
-             if(nombreUsuario === ""){
-                error = error + "NombreUsuario. ";
-                activarBotonRegistrar = false;
-              }
-             contrasena = $("#contrasena").val(); 
-              if(contrasena === ""){
-                error = error + "Contraseña. ";
-                activarBotonRegistrar = false;
-              }
-             correoElectronico = $("#correolectronico").val();
-              if(correoElectronico === ""){
-                error = error + "Correo Electronico. ";
-                activarBotonRegistrar = false;
-              }
-              if(activarBotonRegistrar===false){
-                $("#mensajeFalta").text(error); 
-                $("#divError").show();
-              }else{
-                $("#mensajeFalta").text(""); 
-                $("#divError").hide();
-                let promesa = apiclientRegistrarse.adicionarUsuario(nombre,edad,nombreUsuario,contrasena,correoElectronico); 
-                 promesa.then(
-                 function(){
-                     window.location.href = "iniciarSesion.html";
-                 },
-                 function(){
-                $("#mensajeFalta").text(promesa.responseText); 
-                $("#divError").show();
-                 });
-            
-                }
-            }
+            nombres = $("#nombre").val(); 
+            apellidos = $("#apellido").val(); 
+            telefono  = $("#telefono").val();
+            empresa  = $("#empresa").val();
+            direccion  = $("#direccion").val();
+            correo  = $("#correo").val();
+            var promesa = apiclientRegistrarse.adicionarUsuario(nombres,apellidos,telefono,empresa,direccion,correo); 
+            promesa.then(
+                function(){
+                    alert("Se ha registrado correctamente en la base de datos");
+//                    registrarse.inicializarDatos();
+                },
+                function(){
+                    alert(promesa.responseText);
+                 }
+            );
+        },
+        inicializarDatos(){
+            $("#nombre").val(""); 
+            $("#apellido").val(""); 
+            $("#telefono").val("");
+            $("#empresa").val("");
+            $("#direccion").val("");
+            $("#correo").val("");
+        }
     };
 }());

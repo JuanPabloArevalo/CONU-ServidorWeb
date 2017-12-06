@@ -13,7 +13,8 @@ and open the template in the editor.
         <script src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="/webjars/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" href="css/style.css">
-        <script src="js/index.js"></script>
+        <script src="js/apiclientRegistrarse.js"></script>
+        <script src="js/registrarse.js"></script>
     </head>
     <body id="idFondo">
         <div class="container">
@@ -23,7 +24,6 @@ and open the template in the editor.
 
                     <div class="jumbotron" id="idPanelRegistro">
                         <h1 id="idTitulo">Registro vitrína académica</h1>
-                        <form>
                             <div class="form-group">
                                 <label for="nombre">Nombres:</label>
                                 <input class="form-control" id="nombre" type="nombre">
@@ -48,9 +48,9 @@ and open the template in the editor.
                                 <label for="correo">Correo</label>
                                 <input class="form-control" id="correo" type="email">
                             </div>
-                            <button type="submit" class="btn btn-success btn-block">Enviar!</button>
+                            <button class="btn btn-success btn-block" onclick="registrarse.registrarUsuario()">Enviar!</button>
                             <a href="/index.html" class="btn btn-warning btn-block">Atrás</a>
-                        </form> 
+                        
                     </div>
                 </div> 
                 <div class="col-xs-1 col-sm-2 col-md-2 col-lg-3"></div>

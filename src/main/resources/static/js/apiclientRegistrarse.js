@@ -8,14 +8,11 @@
 var apiclientRegistrarse = (function(){
     
     return{
-        getApiUsuarios(){
-            return $.get("/sharingweather/V1/Usuarios");
-        },
-        adicionarUsuario(nombre,edad,nombreUsuario,contrasena,correoElectronico){
+        adicionarUsuario(nombres,apellidos,telefono,empresa,direccion,correo){
             return $.ajax({
-                url: "/sharingweather/V1/Usuarios",
+                url: "/vitrina",
                 type: "POST",
-                data: '{"nombre":"'+nombre+'","edad":'+edad+', "nombreUsuario":"'+nombreUsuario+'", "password":"'+contrasena+'","correo":"'+correoElectronico+'"}',
+                data: '{"nombres":"'+nombres+'","apellidos":"'+apellidos+'", "telefono":"'+telefono+'", "empresa":"'+empresa+'","direccion":"'+direccion+'","correo":"'+correo+'"}',
                 contentType: "application/json"
             });
         }
