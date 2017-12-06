@@ -3,17 +3,17 @@
 // * To change this template file, choose Tools | Templates
 // * and open the template in the editor.
 // */
-//package conu.conuwebserver;
-//
-///**
-// *
-// * @author JuanArevaloMerchan
-// */
-//
-//import org.springframework.data.repository.CrudRepository;
-//
-//public interface UserRepository extends CrudRepository<User, Integer> {
-//
-//    User findByName(String name);
-//
-//}
+package conu.conuwebserver;
+
+/**
+ *
+ * @author JuanArevaloMerchan
+ */
+
+import org.springframework.data.repository.CrudRepository;
+
+public interface UserRepository extends CrudRepository<User, Integer> {
+
+    User findByName(String name);
+
+}
